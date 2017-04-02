@@ -1,0 +1,104 @@
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<div id="main">
+	<div id="header">
+			<div id="head">CSCI 3290 Assessment 3 Report</div>
+			<div id="head">SID: 1155032539</div>
+			<div id="head">Name: Ng Ting Yuk</div>
+	</div>
+	<div id="content">
+			<div class="title">Part I. Algorithms & Implementation</div>
+			<div>First we have two for loop. The first For loop is 1 to target image height,the increment is (<b class="value">szPatch</b>-<b class="value">szOverlap</b>) . The second For loop is 1 to target image width,the increment is also (<b class="value">szPatch</b>-<b class="value">szOverlap</b>). For example, if we want to output a 300 x 240 image,<b class="value">szPatch</b> = 10,<b class="value">szOverlap</b> = 4,we will run the for loop 50*40 = 2000 times. That mean 2000 Blocks will form the quilting.</div>
+			<div>Calculate the error between the blocks and overlapped region. Then we can find the least error with specific blocks.</div>
+			<div>For texture synthesize, the output image block is equal to the least error block. Then start a new search until the for loop finish.</div>
+			<div>For texture tranfser, the output image block is compare to that targetImg block. </div>
+			<div><br /></div>
+			<div><img src="./image/fig1.png" /></div>
+			<div>In the above image, the result block form the target image.</div>
+			<div>I opened a new result variable to save the least error block is each step and output this finally, so the result image will not have any target image elements in it.</div>
+			<div><img src="./image/fig3.png" /></div>
+			<div><br /></div>		
+			<div class="title">Part II. Result</div>
+			<div>inputImg = <img src="./image/texture.jpg" /> (<b class="value">szPatch</b> = 10 and <b class="value">szOverlap</b> = 4) </div><br />
+			<div>
+			<table>
+			<tr>
+			<th>targetImg</th>
+			<th>Synthesis result</th>
+			<th>Texture result</th>
+			</tr>
+			<tr>
+			<td><img src="./image/leonardo.jpg" /></td>
+			<td><img src="./image/tran1.png" /></td>
+			<td><img src="./image/text1.png" /></td>
+			</tr>
+			</table>
+			<br />
+			<div>More texture result.</div>
+			<br />
+			<table>
+			<tr>
+			<th>targetImg</th>
+			<th>Texture result</th>
+			</tr>
+			<tr>
+			<td><img src="./image/image1.png" /></td>
+			<td><img src="./image/text3.png" /></td>
+			</tr>
+			<tr>
+			<td><img src="./image/pikachu.png" /></td>
+			<td><img src="./image/text4.png" /></td>
+			</tr>
+			<tr>
+			<td><img src="./image/image2.png" /></td>
+			<td><img src="./image/text5.png" /></td>
+			</tr>
+			</table>
+			
+			</div>
+			<br />
+			<div>inputImg = <img src="./image/yogurt.png" /> (<b class="value">szPatch</b> = 10 and <b class="value">szOverlap</b> = 4) </div><br />
+			<div>
+			<table>
+			<tr>
+			<th>targetImg</th>
+			<th>Synthesis result</th>
+			<th>Texture result</th>
+			</tr>
+			<tr>
+			<td><img src="./image/leonardo.jpg" /></td>
+			<td><img src="./image/tran2.png" /></td>
+			<td><img src="./image/text2.png" /></td>
+			</tr>
+			</table>
+			</div>
+			<div class="title">Part III. Discussion</div>
+			<div>My algorithms didn't implement minimum error boundary cut (don't know how to write it), so the synthesis result can become better.</div>
+			<div>Time needed: To run inputImg = texture.jpg and targetImg = leonardo.jpg, the time needed is ~0.9 seconds.</div>
+			<br />
+			<div class="title">Part IV. Discussion on szPatch and overlap</div>
+			<div>inputImg = texture.jpg and targetImg = leonardo.jpg,</div>
+			<div>For szPath = 20 and overlap = 8 (double from default), the result is unreadable.</div>
+			<div><img src="./image/fig4.png" /></div>
+			<div>For szPath = 15 and overlap = 4 (1.5x from default), the result still hard to read but can see the shape.</div>
+			<div><img src="./image/fig5.png" /></div>
+			<div>For szPath = 5 and overlap = 2 (0.5x from default), the result is nearly similar to target image but it need much more time to run and this image is not like Texture tranfer-ed, because people can't see the pattern from input image.</div>
+			<div><img src="./image/fig6.png" /></div>
+			<br />
+			<div class="title">Part V. Reference</div><br />
+			<div>
+			[1] "Image Quilting for Texture Synthesis and Transfer" by Alexei A. Efros and William T. Freeman from <a href="http://graphics.cs.cmu.edu/people/efros/research/quilting/quilting.pdf">http://graphics.cs.cmu.edu/people/efros/research/quilting/quilting.pdf</a><br />
+			[2] Image Quilting/Texture Synthesize by Li Cheng from <br /> <a href="http://www.mathworks.com/matlabcentral/fileexchange/35828--siggraph2002--image-quilting-texture-synthesize">http://www.mathworks.com/matlabcentral/fileexchange/35828--siggraph2002--image-quilting-texture-synthesize</a><br />
+			<br />
+			</div>
+			
+	</div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,243 @@
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<div id="main">
+	<div id="header">
+			<div id="head">CSCI 3290 Assessment 2 Report</div>
+			<div id="head">SID: 1155032539</div>
+			<div id="head">Name: Ng Ting Yuk</div>
+	</div>
+	<div id="content">
+			<div class="title">Part I. Algorithm of Basic Decolorization</div>
+			
+			<div>Step 1. Translate the input image into Lab colour space. <br />
+			Step 2. Use <b class="function">circshift()</b> function to create neighbour matrix.<br />
+			Step 3. Calculate <b class="value">delta_xy</b> and sign of X and Y, <b class="value">sign_X</b> , <b class="value">sign Y</b>.<br />
+			Step 4. Use <b class="function">sparse()</b> to construct <b class="value">A</b>.<br />
+			For example a (4x3) matrix, the <b class="value">A</b> will be like this:<br />
+			<img src="./image/fig4.png" />
+			<br />
+			Step 5. Calculate <b class="value">G</b> then reshape the vector <b class="value">G</b> to Grey Image <b class="value">gIm</b>.<br />
+			Step 6. Normalization <b class="value">gIm</b> then output.<br />
+			<div class="title">Part II. Algorithm of CCPR</div>
+			
+			<div>
+			Step 1. Translate the input image into Lab colour space.<br />
+			Step 2. Use <b class="function">circshift()</b> function to create neighbour matrix of original color image.<br />
+			Step 3. Calculate <b class="value">delta_xy</b> and sign of X and Y.<br />
+			 <br />
+			Step 4. Create an empty vector <b class="value">T</b> , the size is the length of <b class="value">delta_xy</b>.<br />
+			Step 5. For i = 1 to length(<b class="value">delta_xy</b>), if <b class="value">delta_xy</b>(i) > <b class="value">delta_xy</b>, <b class="value">T(i)</b> = 1, otherwise, <b class="value">T(i)</b> = 0. After reshape the vector <b class="value">T</b> to matrix, we can know the which number of pixel pairs is distinctive in their original color.<br />
+			 <br />
+			Step 6. Use <b class="function">circshift()</b> function to create neighbour matrix of Grey colour image in Part 1.<br />
+			Step 7. Create an empty vector <b class="value">T_G</b> , the size is the length of <b class="value">delta_xy</b>.<br />
+			Step 8. For i = 1 to length(<b class="value">delta_xy</b>), if <b class="value">delta_xy</b>(i) > <b class="value">delta_xy</b>, <b class="value">T(i)</b> = 1, otherwise, <b class="value">T(i)</b> = 0. After reshape the vector <b class="value">T_G</b> to matrix, we can know the which number of pixel pairs is distinctive in their grey color.<br />
+			 <br />
+			Step 9.<br />
+			<b class="value">T_G</b> = <b class="value">T</b>+ <b class="value">T_G</b>;<br />
+			<b class="value">distinctive_number</b> = <b class="function">numel</b>(<b class="value">T_G</b>, <b class="value">T_G</b> > 1);<br />
+			 <br />
+			If there is a value is the new <b class="value">T_G</b> matrix which = 2, that pixel pairs can consider is distinctive after decolorization.<br />
+			 <br />
+			<b class="value">pixel_pairs</b> = <b class="function">numel</b>(<b class="value">T</b>, <b class="value">T</b> > 1);<br />
+			To calculate pixel_pairs in the original image which is  ||Omega||.<br />
+			 <br />
+			Step 10. <b class="value">ccrpRe</b> = <b class="value">distinctive_number</b> / <b class="value">pixel_pairs</b>; and we can get the result.<br />
+			</div>
+
+			<div class="title">Part III. Result and discussion on the provided image</div>
+			<div>
+			<table>
+			<tr>
+			<th>Image Number</th>
+			<th>Original Image</th>
+			<th>After Decolorization</th>
+			<th>CCPR</th>
+			</tr>
+			<tr>
+			<td>1</td>
+			<td><img src="./image/1.png" height="50%" /></td>
+			<td><img src="./image/result-1.png" height="50%" /></td>
+			<td>0.174822</td>	
+			</tr>
+			<tr>
+			<td>2</td>
+			<td><img src="./image/2.png" height="50%" /></td>
+			<td><img src="./image/result-2.png" height="50%" /></td>
+			<td>0.550666</td>	
+			</tr>
+			<tr>
+			<td>3</td>
+			<td><img src="./image/3.png" height="50%" /></td>
+			<td><img src="./image/result-3.png" height="50%" /></td>
+			<td>0.328153</td>	
+			</tr>
+			<tr>
+			<td>4</td>
+			<td><img src="./image/4.png" height="50%" /></td>
+			<td><img src="./image/result-4.png" height="50%" /></td>
+			<td>0.237409</td>	
+			</tr>
+			<tr>
+			<td>5</td>
+			<td><img src="./image/5.png" height="50%" /></td>
+			<td><img src="./image/result-5.png" height="50%" /></td>
+			<td>0.315337</td>	
+			</tr>
+			<tr>
+			<td>6</td>
+			<td><img src="./image/6.png" height="50%" /></td>
+			<td><img src="./image/result-6.png" height="50%" /></td>
+			<td>0.317862</td>	
+			</tr>
+			<tr>
+			<td>7</td>
+			<td><img src="./image/7.png" /></td>
+			<td><img src="./image/result-7.png"/></td>
+			<td>0.388055</td>	
+			</tr>
+			<tr>
+			<td>8</td>
+			<td><img src="./image/8.png"/></td>
+			<td><img src="./image/result-8.png" /></td>
+			<td>0.422078</td>	
+			</tr>
+			<tr>
+			<td>9</td>
+			<td><img src="./image/9.png" height="50%" /></td>
+			<td><img src="./image/result-9.png" height="50%" /></td>
+			<td>0.181550</td>	
+			</tr>
+			<tr>
+			<td>10</td>
+			<td><img src="./image/10.png" height="50%" /></td>
+			<td><img src="./image/result-10.png" height="50%" /></td>
+			<td>0.193811</td>	
+			</tr>
+			</table>
+			<br />
+			<div>Since I'm using <b class="function">circshift()</b>,there will have one line of element didn't match to his neighbour, but I think it may not cause big problem so I just leave it.</div>
+			<br />
+			<div class="title">Part IV. Extra Credit 1 (More advanced decolorization algorithm)</div>
+			<div> According to <b>"Real-time Contrast Preserving Decolorization"</b> written by Cewu Lu,Li Xu and Jiaya Jia, we can use these two equation to find E(g). <br />
+			<img src="./image/fig1.png" /><br />
+			<img src="./image/fig2.png" /><br />
+			And in the Real-time Contrast Preserving Decolorization present slides, it mentioned for each weight, the search range is [0,1]. The searching step is 0.1, under constraint wr + wg + wb = 1. So there have 66 candidate solutions in total.<br />
+			In <b>"Contrast Preserving Decolorization"</b> written by Cewu Lu,Li Xu and Jiaya Jia, we can find out how to calculate <b class="value">\delta gx,y</b>.<br />
+			<img src="./image/fig3.png" /><br />
+
+			We can substitute eq.(2) to eq.(3). To calculation <b class="value">\delta gx,y</b> in equation (10), we can try 66 combination of { wr , wg , wb } as above mentioned.<br />
+			After the trial, we can find the maximum <b class="value">E(g)</b> with specific { wr , wg , wb }.<br />
+ 
+			Then multiply that { wr , wg , wb } values to the corresponding color space of the original image then we can get the answer.<br />
+			<br />
+			In this part, I referenced some matlab code from <a href="http://www.cse.cuhk.edu.hk/~leojia/projects/color2gray/">here</a> and simplified it so it need much more time to run compare to original.<br />
+			<br />
+			<u>Result:</u><br />
+			
+			<table>
+			<tr>
+			<th>Original Image</th>
+			<th>Part 1 Method</th>
+			<th>Part 1's CCPR</th>
+			<th>Advanced Method</th>
+			<th>Advanced's CCPR</th>
+			</tr>
+			<tr>
+			<td><img src="./image/6.png" height="50%" /></td>
+			<td><img src="./image/result-part1-6.png" height="50%" /></td>
+			<td>0.317862</td>
+			<td><img src="./image/result-adv-6.png" height="50%" /></td>
+			<td>0.502858</td>
+			
+			</tr>
+			</table>
+			</div>
+			
+			<div class="title">Part V. Extra Credit 2 (Three different decolorization algorithms)</div>
+			<div>
+			I used <b>lightness</b> method , <b>average</b> method and <b>luminosity</b> method. <br />
+			<br />
+			<b>Lightness</b> method: max(R, G, B) + min(R, G, B)) / 2<br />
+			<b>Average</b> method: (R + G + B) / 3<br />
+			<b>Luminosity</b> method: 0.21 R + 0.72 G + 0.07 B<br />
+			<br />
+			I will compare these three method with the method in part I.<br />
+			<br />
+			<u>Time Usage </u> <br />
+			<br />
+			<img src="./image/fig5.png" /><br />
+			To test the time usage of these function.<br />
+			<br />
+			Test image: Image Number 6 <br />
+			<br />
+			Part I method: 1.533054 seconds <br />
+			Lightness method: 0.008231 seconds <br />
+			Average method: 0.006537 seconds <br />
+			Luminosity method: 0.006569 seconds <br />
+			<br />
+			<u>Result and CCPR </u> <br />
+			<table>
+			<tr>
+			<th>Method</th>
+			<th>Result</th>
+			<th>CCPR</th>
+			</tr>
+			<tr>
+			<td>Part I</td>
+			<td><img src="./image/result-6.png" height="50%" /></td>
+			<td>0.317862</td>
+			</tr>
+			<tr>
+			<td>Lightness</td>
+			<td><img src="./image/result-lightness-6.png" height="50%" /></td>
+			<td>0.394677</td>
+			</tr>
+			<tr>
+			<td>Average</td>
+			<td><img src="./image/result-average-6.png" height="50%" /></td>
+			<td>0.315436</td>
+			</tr>
+			<tr>
+			<td>Luminosity</td>
+			<td><img src="./image/result-luminosity-6.png" height="50%" /></td>
+			<td>0.304532</td>
+			</tr>
+			</table>
+			<br />
+			Conclusion: Part I method slower then other three method but it can contain more detail of the oriigin image.<br />
+			Other method are much faster but it may cause some trouble.<br />
+			For example, using <b>Luminosity method</b> in "Image Number 2".<br />
+			<br />
+			<table>
+			<tr>
+			<th>Original Image</th>
+			<th>Result</th>
+			</tr>
+			<tr>
+			<td><img src="./image/2.png" height="50%" /></td>
+			<td><img src="./image/result-luminosity-2.png" height="50%" /></td>
+			</tr>
+			</table>
+			<br />
+			Which can't maintain the color different but other method can.<br />
+			</div>
+			<br />
+			<div class="title">Part VI. Reference</div><br />
+			<div>
+			[1] "Contrast Preserving Decolorization" by Cewu Lu,Li Xu and Jiaya Jia from <a href="http://appsrv.cse.cuhk.edu.hk/~cwlu/decolorization_iccp12.pdf">http://appsrv.cse.cuhk.edu.hk/~cwlu/decolorization_iccp12.pdf</a><br />
+			<br />
+			[2] "Real-time Contrast Preserving Decolorization" by Cewu Lu,Li Xu and Jiaya Jia from <a href="http://appsrv.cse.cuhk.edu.hk/~xuli/mypapers/siga12t_color2gray.pdf">http://appsrv.cse.cuhk.edu.hk/~xuli/mypapers/siga12t_color2gray.pdf</a><br />
+			<br />
+			[3] Contrast Preserving Decolorization Matlab Code from <a href="http://www.cse.cuhk.edu.hk/~leojia/projects/decolorization/release_metric_code.zip">http://www.cse.cuhk.edu.hk/~leojia/projects/decolorization/release_metric_code.zip</a><br />
+			</div>
+			</div>
+	</div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Please Select Photo"
+        android:id="@+id/textView" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_gravity="center_horizontal" />
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:id="@+id/btn_image_1"
+            android:src="@drawable/middlebury_20_clean_color"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp" />
+
+        <ImageButton
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_image_4"
+            android:layout_toEndOf="@+id/btn_image_1"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/btn_image_1"
+            android:layout_marginLeft="50dp"
+            android:src="@drawable/image4left"
+            android:layout_alignBottom="@+id/btn_image_1" />
+
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_gravity="center_horizontal" />
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:id="@+id/btn_image_2"
+            android:src="@drawable/middlebury_21_clean_color"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_image_5"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/btn_image_2"
+            android:layout_toEndOf="@+id/btn_image_2"
+            android:layout_marginLeft="50dp"
+            android:src="@drawable/breadl"
+            android:layout_alignBottom="@+id/btn_image_2" />
+
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_gravity="center_horizontal" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ImageButton
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:id="@+id/btn_image_3"
+            android:src="@drawable/left3" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_image_6"
+            android:layout_toEndOf="@+id/btn_image_3"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/btn_image_3"
+            android:layout_marginLeft="50dp"
+            android:src="@drawable/im0"
+            android:layout_alignBottom="@+id/btn_image_3" />
+    </RelativeLayout>
+
+</LinearLayout>

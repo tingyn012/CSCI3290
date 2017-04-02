@@ -1,0 +1,92 @@
+<html>
+
+
+<body>
+
+<h1>CSCI 3290 - Asg 1 Report <h1>
+
+<h2>Name: Ng Ting Yuk SID: 1155032539 </h2>
+
+
+<p><u>Algorithm for alignSingle.m </u></p>
+
+<p>Step 1. Calculate imgradient of the image to make two layer become more similar.</p>
+
+<p>Step 2. Calculate the score when used circshift() 1 by 1.
+<br />
+Score = Green/Red layer - Blue layer , then sum up all the element in the matrix.
+<br />
+Smaller Score mean Green/Red layer is more similar to Blue layer.</p>
+<p>Step 3. After used 2 for-loop Circshift(),we can find the smaller score.(Saved shifted value in <b>findVMin</b> and <b>findHMin</b>).</p>
+<p>Step 4. Use circshift() to shift the image to the Smaller Score point and return the image.</p>
+
+
+<p><u>Algorithm for alignMulti.m </u></p>
+
+<p>Step 1. Filter the image with gaussian and calculate the imgradient of the image</p>
+
+<p>Step 2. Resize the image to (image)*2^(-pyramid_levels) for each pyramid_levels.
+<br />
+Example. When there is a 3200*3200 image, we will resize it to 1600*1600 then 800*800 , 400*400 , 200*200 where pyramid_levels = 5.
+</p>
+
+<p>Step 3. Used alignSingle algorithm to the smaller image, get the <b>findVMin</b> and <b>findHMin</b> values.</p>
+
+<p>Step 4. Double the value of <b>findVMin</b> and <b>findHMin</b> and adjust them by using <b>circshift()</b>,
+<br />
+searching near pixels (around 20*20) to find out it there have a new smaller score.
+<br />
+Doing this process until the image size is equal to the original.
+</p>
+
+<p>Step 5. Adjust is finish,return the image to the main function.</p>
+
+<p>Example (For alignMulti). First find the <b>VMin</b> and <b>HMin</b> (green point). then use the doubled size of that image, and double the value of <b>VMin</b> and <b>HMin</b>. And adjust it by finding the NEW MIN score in yellow area.</p>
+
+<p><img src="./fig1.png" /></p>
+
+<p><img src="./fig2.png" /></p>
+
+
+<u>Result (for alignSingle.m):</u>
+<p>Here are 5 image after process by imgAlignSingle. Original image can find in code file.</p>
+<p>IMG00971<img src="./result-00971v.jpg" /></p>
+<p>IMG00978<img src="./result-00978v.jpg" /></p>
+<p>IMG01018<img src="./result-01018v.jpg" /></p>
+<p>IMG01023<img src="./result-01023v.jpg" /></p>
+<p>IMG01040<img src="./result-01040v.jpg" /></p>
+
+<u>Discussion</u>
+
+<p>The algorithm is not fast enough. For a 300*400 image, need to use Circshift() 300*400*2 times,the time complexity is almost O(n^2).</p>
+
+<p>Sloving: Only consider use Circshift() in the blue area for a 300*400 image(Fig.3), it may lower the accuracy but can make the algorithm faster than 4 times.</p>
+
+<p>O(width*height*2) => O(width*0.5 * height*0.5 *2) => 1/4 * O(width*height*2)</p>
+
+<p><b>(Fig. 3)</b><img src="./fig3.png" /></p>
+
+<p>The algorithm accuracy still need improvement. In image IMG01040, after the shifting, we can still see the performance is not as good as other image.<p>
+
+<u>Using gradients</u>
+<p>Unless aligning based on RGB similarity, it also used gradients.</p>
+<p>Here are the different between no shifting, no gradients and used gradients</p>
+
+<table>
+<tr>
+	<td>No shifting</td>
+	<td>No gradients</td>
+	<td>Used gradients</td>
+</tr>
+<tr>
+	<td><img src="./noshifting.png" /></td>
+	<td><img src="./nogradient.png" /></td>
+	<td><img src="./usegradient.png" /></td>
+</tr>
+</table>
+
+
+<p> -- Finish -- </p>
+</body>
+
+</html>
